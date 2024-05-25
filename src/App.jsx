@@ -6,7 +6,7 @@ function App() {
     <div>
       <MainScreen />
     </div>
-  )
+  );
 }
 
 export default App;
