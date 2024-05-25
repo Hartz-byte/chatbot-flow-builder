@@ -20,7 +20,7 @@ const FlowBuilder = () => {
 
   return (
     <div>
-      <div style={{ width: "75vw", height: "90vh" }}>
+      <div style={{ width: "73vw", height: "90vh" }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
