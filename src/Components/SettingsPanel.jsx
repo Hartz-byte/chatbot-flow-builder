@@ -1,11 +1,12 @@
+// SettingsPanel.jsx
 import React, { useState } from "react";
-
 import MessageIcon from "../assets/Icons/MessageIcon.png";
 import MessageText from "./SettingsPanelComponent/MessageText";
 
-const SettingsPanel = () => {
+const SettingsPanel = ({ onAddNode }) => {
   const [active, setActive] = useState("false");
 
+  // back btn handle
   const backBtnHandle = () => {
     setActive("false");
   };

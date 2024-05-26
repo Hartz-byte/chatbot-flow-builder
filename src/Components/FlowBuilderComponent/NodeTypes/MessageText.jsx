@@ -1,3 +1,4 @@
+// MessageText.jsx
 import React from "react";
 import MessageIcon from "../../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../../assets/Icons/WhatsappIcon.png";
