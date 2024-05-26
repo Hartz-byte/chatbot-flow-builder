@@ -35,23 +35,30 @@
 
 // export default FlowBuilder;
 
-import React from "react";
-import ReactFlow, { useEdgesState, useNodesState } from "reactflow";
-
+import React, { useCallback } from "react";
+import ReactFlow, { addEdge, useEdgesState, useNodesState } from "reactflow";
 import "reactflow/dist/style.css";
 
-// nodes
-const initialNodes = [
-  { id: "1", position: { x: 0, y: 0 }, data: { label: "Node 1" } },
-  { id: "2", position: { x: 0, y: 100 }, data: { label: "Node 1" } },
-];
+import {
+  initialEdges,
+  initialNodes,
+} from "./FlowBuilderComponent/FlowBuilderConstants";
+import MessageText from "./FlowBuilderComponent/NodeTypes/MessageText";
 
-// edges
-const initialEdges = [{ if: "1-2", source: "1", target: "2" }];
+// node types
+const nodeTypes = {
+  messageText: MessageText,
+};
 
 const FlowBuilder = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // onConnect
+  const onConnect = useCallback((connection) => {
+    const edge = { ...connection, id: `${edges.length} + 1` };
+    setEdges((prevEdges) => addEdge(edge, prevEdges));
+  });
 
   return (
     <div style={{ width: "73vw", height: "90vh" }}>
@@ -60,6 +67,8 @@ const FlowBuilder = () => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}
         fitView
       />
     </div>
