@@ -2,11 +2,7 @@
 import React, { useCallback, useContext, useEffect } from "react";
 import ReactFlow, { addEdge, useEdgesState, useNodesState } from "reactflow";
 import "reactflow/dist/style.css";
-import {
-  initialEdges,
-  // initialNodes,
-} from "./FlowBuilderComponent/FlowBuilderConstants";
-import MessageText from "./FlowBuilderComponent/NodeTypes/MessageText";
+import MessageText from "./FlowBuilderComponent/MessageText";
 import { FlowContext } from "../ContextAPI/Context";
 
 // node types
@@ -15,7 +11,7 @@ const nodeTypes = {
 };
 
 const FlowBuilder = () => {
-  const { initialNodes, addNode } = useContext(FlowContext);
+  const { initialNodes, initialEdges, addNode } = useContext(FlowContext);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
