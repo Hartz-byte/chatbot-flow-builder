@@ -1,14 +1,20 @@
 // SettingsPanel.jsx
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MessageIcon from "../assets/Icons/MessageIcon.png";
 import MessageText from "./SettingsPanelComponent/MessageText";
+import { FlowContext } from "../ContextAPI/Context";
 
-const SettingsPanel = ({ onAddNode }) => {
+const SettingsPanel = () => {
+  const { addNode } = useContext(FlowContext);
   const [active, setActive] = useState("false");
 
   // back btn handle
   const backBtnHandle = () => {
     setActive("false");
+  };
+
+  const addMessageNode = () => {
+    addNode();
   };
 
   return (
@@ -31,6 +37,7 @@ const SettingsPanel = ({ onAddNode }) => {
             justifyContent: "center",
             alignItems: "center",
           }}
+          onClick={addMessageNode}
         >
           <img src={MessageIcon} alt="Message Icon" width="30" height="30" />
           Message

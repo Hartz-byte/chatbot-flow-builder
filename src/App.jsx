@@ -1,11 +1,13 @@
+// App.jsx
 import React from "react";
 import MainScreen from "./MainScreen/MainScreen";
+import { FlowProvider } from "./ContextAPI/Context";
 
 function App() {
   return (
-    <div>
+    <FlowProvider>
       <MainScreen />
-    </div>
+    </FlowProvider>
   );
 }
 

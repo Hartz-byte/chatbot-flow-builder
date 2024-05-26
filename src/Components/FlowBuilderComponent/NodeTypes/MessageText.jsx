@@ -4,7 +4,7 @@ import MessageIcon from "../../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../../assets/Icons/WhatsappIcon.png";
 import { Handle, Position } from "reactflow";
 
-const MessageText = ({ data: { amount } }) => {
+const MessageText = ({ data: { message } }) => {
   return (
     <div
       style={{
@@ -68,7 +68,7 @@ const MessageText = ({ data: { amount } }) => {
           height: "25px",
         }}
       >
-        <p style={{ fontSize: "8px", fontWeight: "400" }}>test message 1</p>
+        <p style={{ fontSize: "8px", fontWeight: "400" }}>{message}</p>
       </div>
 
       {/* handle */}

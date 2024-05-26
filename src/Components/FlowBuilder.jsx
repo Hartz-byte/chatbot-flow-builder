@@ -1,12 +1,13 @@
 // FlowBuilder.jsx
-import React, { useCallback } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import ReactFlow, { addEdge, useEdgesState, useNodesState } from "reactflow";
 import "reactflow/dist/style.css";
 import {
   initialEdges,
-  initialNodes,
+  // initialNodes,
 } from "./FlowBuilderComponent/FlowBuilderConstants";
 import MessageText from "./FlowBuilderComponent/NodeTypes/MessageText";
+import { FlowContext } from "../ContextAPI/Context";
 
 // node types
 const nodeTypes = {
@@ -14,8 +15,18 @@ const nodeTypes = {
 };
 
 const FlowBuilder = () => {
+  const { initialNodes, addNode } = useContext(FlowContext);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  useEffect(() => {
+    const handleNodeAdd = () => {
+      setNodes([...initialNodes]);
+    };
+
+    handleNodeAdd();
+    return () => {};
+  }, [initialNodes, addNode]);
 
   // onConnect
   const onConnect = useCallback((connection) => {
