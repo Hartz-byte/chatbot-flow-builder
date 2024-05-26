@@ -19,7 +19,7 @@ const SettingsPanel = () => {
       }}
     >
       {active == "false" ? (
-        // message button
+        // message node button
         <button
           style={{
             width: "150px",
