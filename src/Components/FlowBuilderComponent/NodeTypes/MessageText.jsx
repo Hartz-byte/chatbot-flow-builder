@@ -1,6 +1,7 @@
 import React from "react";
 import MessageIcon from "../../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../../assets/Icons/WhatsappIcon.png";
+import { Handle, Position } from "reactflow";
 
 const MessageText = ({ data: { amount } }) => {
   return (
@@ -68,6 +69,10 @@ const MessageText = ({ data: { amount } }) => {
       >
         <p style={{ fontSize: "8px", fontWeight: "400" }}>test message 1</p>
       </div>
+
+      {/* handle */}
+      <Handle type="source" position={Position.Right} />
+      <Handle type="target" position={Position.Left} />
     </div>
   );
 };
