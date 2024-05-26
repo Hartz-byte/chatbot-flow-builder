@@ -1,5 +1,4 @@
 import React from "react";
-
 import MessageIcon from "../../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../../assets/Icons/WhatsappIcon.png";
 
@@ -28,13 +27,21 @@ const MessageText = ({ data: { amount } }) => {
       >
         {/* message icon and send message text */}
         <div
-          style={{ display: "flex", alignItems: "center", marginLeft: "5px" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginLeft: "5px",
+            height: "15px",
+          }}
         >
           <img src={MessageIcon} alt="Message Icon" width="8" height="8" />
 
-          <p style={{ fontSize: "7px", marginLeft: "5px" }}>Send Message</p>
+          <p style={{ fontSize: "7px", fontWeight: "600", marginLeft: "5px" }}>
+            Send Message
+          </p>
         </div>
 
+        {/* whatsapp icon */}
         <div
           style={{
             display: "flex",
@@ -47,6 +54,19 @@ const MessageText = ({ data: { amount } }) => {
         >
           <img src={WhatsappIcon} alt="Message Icon" width="8" height="8" />
         </div>
+      </div>
+
+      {/* node message text section */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          marginLeft: "7px",
+          height: "25px",
+        }}
+      >
+        <p style={{ fontSize: "8px", fontWeight: "400" }}>test message 1</p>
       </div>
     </div>
   );
