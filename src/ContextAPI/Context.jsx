@@ -5,14 +5,20 @@ const FlowContext = createContext({
   initialNodes: [],
   initialEdges: [],
   addNode: () => {},
+  active: false,
+  setActive: () => {},
+  panelActive: () => {},
+  nodeId: "",
 });
+
+let id;
 
 const FlowProvider = ({ children }) => {
   const [initialNodes, setInitialNodes] = useState([
     {
       id: "1",
       position: { x: -300, y: 0 },
-      data: { message: "test message 1" },
+      data: { message: "test message 1", id },
       type: "messageText",
     },
     {
@@ -23,6 +29,7 @@ const FlowProvider = ({ children }) => {
     },
   ]);
 
+  // add new node
   const addNode = () => {
     setInitialNodes([
       ...initialNodes,
@@ -36,6 +43,17 @@ const FlowProvider = ({ children }) => {
   };
 
   const [initialEdges, setInitialEdges] = useState([]);
+  const [active, setActive] = useState(false);
+  const [nodeId, setNodeId] = useState("");
+
+  // panel active status change
+  const panelActive = () => {
+    if (active) {
+      setActive(false);
+    } else {
+      setActive(true);
+    }
+  };
 
   return (
     <FlowContext.Provider
@@ -43,6 +61,11 @@ const FlowProvider = ({ children }) => {
         initialNodes,
         addNode,
         initialEdges,
+        active,
+        setActive,
+        panelActive,
+        nodeId,
+        setNodeId,
       }}
     >
       {children}

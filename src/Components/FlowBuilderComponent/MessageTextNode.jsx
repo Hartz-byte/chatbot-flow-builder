@@ -1,10 +1,19 @@
 // MessageTextNode.jsx
-import React from "react";
+import React, { useContext } from "react";
 import MessageIcon from "../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../assets/Icons/WhatsappIcon.png";
 import { Handle, Position } from "reactflow";
+import { FlowContext } from "../../ContextAPI/Context";
 
-const MessageTextNode = ({ data: { message } }) => {
+const MessageTextNode = ({ data: { message }, id }) => {
+  const { setActive, setNodeId } = useContext(FlowContext);
+
+  // node click handle
+  const nodeClickHandle = () => {
+    setActive(true);
+    setNodeId(id);
+  };
+
   return (
     <div
       style={{
@@ -13,6 +22,7 @@ const MessageTextNode = ({ data: { message } }) => {
         borderRadius: "5px",
         boxShadow: "0px 0px 7px rgba(0, 0, 0, 0.3)",
       }}
+      onClick={nodeClickHandle}
     >
       {/* node head section */}
       <div

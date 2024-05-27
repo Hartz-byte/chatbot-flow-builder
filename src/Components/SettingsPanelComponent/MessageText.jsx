@@ -1,5 +1,4 @@
 import React from "react";
-
 import BackIcon from "../../assets/Icons/BackIcon.png";
 
 const MessageText = ({ backBtnHandle }) => {

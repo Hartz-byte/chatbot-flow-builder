@@ -1,21 +1,11 @@
 // SettingsPanel.jsx
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext } from "react";
 import MessageIcon from "../assets/Icons/MessageIcon.png";
 import MessageText from "./SettingsPanelComponent/MessageText";
 import { FlowContext } from "../ContextAPI/Context";
 
 const SidePanel = () => {
-  const { addNode } = useContext(FlowContext);
-  const [active, setActive] = useState("false");
-
-  // back btn handle
-  const backBtnHandle = () => {
-    setActive("false");
-  };
-
-  const addMessageNode = () => {
-    addNode();
-  };
+  const { addNode, active, panelActive } = useContext(FlowContext);
 
   return (
     <div
@@ -25,27 +15,30 @@ const SidePanel = () => {
         borderRadius: "3px",
       }}
     >
-      {active == "false" ? (
-        // message node button
-        <button
-          style={{
-            width: "150px",
-            height: "80px",
-            margin: "12px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onClick={addMessageNode}
-        >
-          <img src={MessageIcon} alt="Message Icon" width="30" height="30" />
-          Message
-        </button>
-      ) : (
-        // message text input area component
+      {!active ? (
+        // node panel
         <>
-          <MessageText backBtnHandle={backBtnHandle} />
+          {/* message node button */}
+          <button
+            style={{
+              width: "150px",
+              height: "80px",
+              margin: "12px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onClick={addNode}
+          >
+            <img src={MessageIcon} alt="Message Icon" width="30" height="30" />
+            Message
+          </button>
+        </>
+      ) : (
+        // settings panel
+        <>
+          <MessageText backBtnHandle={panelActive} />
         </>
       )}
     </div>
