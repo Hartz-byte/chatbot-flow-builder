@@ -1,10 +1,10 @@
 // SettingsPanel.jsx
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import MessageIcon from "../assets/Icons/MessageIcon.png";
 import MessageText from "./SettingsPanelComponent/MessageText";
 import { FlowContext } from "../ContextAPI/Context";
 
-const SettingsPanel = () => {
+const SidePanel = () => {
   const { addNode } = useContext(FlowContext);
   const [active, setActive] = useState("false");
 
@@ -52,4 +52,4 @@ const SettingsPanel = () => {
   );
 };
 
-export default SettingsPanel;
+export default SidePanel;

@@ -2,7 +2,7 @@ import React from "react";
 
 import FlowBuilder from "../Components/FlowBuilder";
 import SaveButton from "../Components/SaveButton";
-import SettingsPanel from "../Components/SettingsPanel";
+import SidePanel from "../Components/SidePanel";
 
 const MainScreen = () => {
   return (
@@ -14,8 +14,8 @@ const MainScreen = () => {
         {/* flow builder component */}
         <FlowBuilder />
 
-        {/* settings panel component */}
-        <SettingsPanel />
+        {/* node / settings panel component */}
+        <SidePanel />
       </div>
     </div>
   );

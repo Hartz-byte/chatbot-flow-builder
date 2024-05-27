@@ -1,10 +1,10 @@
-// MessageText.jsx
+// MessageTextNode.jsx
 import React from "react";
 import MessageIcon from "../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../assets/Icons/WhatsappIcon.png";
 import { Handle, Position } from "reactflow";
 
-const MessageText = ({ data: { message } }) => {
+const MessageTextNode = ({ data: { message } }) => {
   return (
     <div
       style={{
@@ -78,4 +78,4 @@ const MessageText = ({ data: { message } }) => {
   );
 };
 
-export default MessageText;
+export default MessageTextNode;

@@ -2,12 +2,12 @@
 import React, { useCallback, useContext, useEffect } from "react";
 import ReactFlow, { addEdge, useEdgesState, useNodesState } from "reactflow";
 import "reactflow/dist/style.css";
-import MessageText from "./FlowBuilderComponent/MessageText";
+import MessageTextNode from "./FlowBuilderComponent/MessageTextNode";
 import { FlowContext } from "../ContextAPI/Context";
 
 // node types
 const nodeTypes = {
-  messageText: MessageText,
+  messageText: MessageTextNode,
 };
 
 const FlowBuilder = () => {
@@ -15,14 +15,15 @@ const FlowBuilder = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  // useEffect to reflect new node without refreshing
   useEffect(() => {
-    const handleNodeAdd = () => {
-      setNodes([...initialNodes]);
-    };
-
     handleNodeAdd();
-    return () => {};
   }, [initialNodes, addNode]);
+
+  // new node
+  const handleNodeAdd = () => {
+    setNodes([...initialNodes]);
+  };
 
   // onConnect
   const onConnect = useCallback((connection) => {

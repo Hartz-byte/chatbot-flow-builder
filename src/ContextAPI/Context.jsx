@@ -38,7 +38,13 @@ const FlowProvider = ({ children }) => {
   const [initialEdges, setInitialEdges] = useState([]);
 
   return (
-    <FlowContext.Provider value={{ initialNodes, addNode, initialEdges }}>
+    <FlowContext.Provider
+      value={{
+        initialNodes,
+        addNode,
+        initialEdges,
+      }}
+    >
       {children}
     </FlowContext.Provider>
   );
