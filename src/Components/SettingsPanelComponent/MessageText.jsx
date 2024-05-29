@@ -1,7 +1,26 @@
-import React from "react";
+// MessageText.jsx
+import React, { useContext, useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
+import { FlowContext } from "../../ContextAPI/Context";
 
-const MessageText = ({ backBtnHandle }) => {
+const MessageText = ({ backBtnHandle, nodeId }) => {
+  const { nodeMessage, setNodeMessage, updateNodeMessage, clearNodeMessage } =
+    useContext(FlowContext);
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSaveMessage = () => {
+    if (inputValue) {
+      updateNodeMessage(nodeId, inputValue);
+      clearNodeMessage();
+      setInputValue("");
+    }
+  };
+
   return (
     <div>
       {/* top nav */}
@@ -30,7 +49,7 @@ const MessageText = ({ backBtnHandle }) => {
       </div>
 
       {/* text area */}
-      <div>
+      <div style={{ borderBottom: "1px solid #D9D9D9" }}>
         <p
           style={{
             color: "#B7B7B7",
@@ -42,9 +61,11 @@ const MessageText = ({ backBtnHandle }) => {
         </p>
 
         <textarea
+          value={inputValue}
+          onChange={handleInputChange}
           style={{
             fontSize: 16,
-            margin: "20px 10px",
+            margin: "20px 10px 30px 10px",
             width: "370px",
             height: "80px",
             resize: "vertical",
@@ -55,6 +76,8 @@ const MessageText = ({ backBtnHandle }) => {
           }}
           placeholder="Enter your message..."
         />
+
+        <button onClick={handleSaveMessage}>Save Update</button>
       </div>
     </div>
   );
