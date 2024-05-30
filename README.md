@@ -1,8 +1,11 @@
-# React + Vite
+# Chatbot Flow Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application that allows you to create and visualize workflows with an interactive node-based UI. It's built using the powerful reactflow library and demonstrates concepts like:
 
-Currently, two official plugins are available:
+1. Flowchart creation: Drag and drop nodes to represent different steps in your workflow.
+2. Node customization: Design custom nodes with your preferred text content and appearance.
+3. Connections: Connect nodes using edges to define the flow of your process.
+4. Local storage: Save your workflows locally for future reference.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Demo:
+Check out the deployed version of this project at [chatbot-flow-builder-mu-three.vercel.app](https://chatbot-flow-builder-mu-three.vercel.app "Live Demo").
