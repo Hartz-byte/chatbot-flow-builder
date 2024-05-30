@@ -36,7 +36,7 @@ const FlowProvider = ({ children }) => {
       {
         id: `new-${initialNodes.length + 1}`,
         position: { x: 0, y: 30 * (initialNodes.length + 1) },
-        data: { message: "new node" },
+        data: { message: "textNode" },
         type: "messageText",
       },
     ]);

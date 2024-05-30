@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
 
 const MessageText = ({ backBtnHandle }) => {
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <div>
       {/* top nav */}
@@ -30,7 +32,7 @@ const MessageText = ({ backBtnHandle }) => {
       </div>
 
       {/* text area */}
-      <div>
+      <div style={{ borderBottom: "1px solid #D9D9D9" }}>
         <p
           style={{
             color: "#B7B7B7",
@@ -42,6 +44,9 @@ const MessageText = ({ backBtnHandle }) => {
         </p>
 
         <textarea
+          placeholder="Enter your message..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           style={{
             fontSize: 16,
             margin: "20px 10px",
@@ -53,8 +58,11 @@ const MessageText = ({ backBtnHandle }) => {
             borderRadius: "8px",
             boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.1)",
           }}
-          placeholder="Enter your message..."
         />
+
+        <button style={{ marginLeft: "10px", marginBottom: "10px" }}>
+          Save Update
+        </button>
       </div>
     </div>
   );
