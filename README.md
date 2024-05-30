@@ -16,7 +16,7 @@ Check out the deployed version of this project at [chatbot-flow-builder-mu-three
 git clone https://github.com/Hartz-byte/chatbot-flow-builder.git
 
 ### 2. Install dependencies:
-cd react-flow-builder
+cd react-flow-builder 
 npm install
 
 ### 3. Start the development server:
