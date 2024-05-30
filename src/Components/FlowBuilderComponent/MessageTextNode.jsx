@@ -6,15 +6,21 @@ import { Handle, Position } from "reactflow";
 import { FlowContext } from "../../ContextAPI/Context";
 
 const MessageTextNode = ({ data: { message }, id }) => {
-  const { setActive, setNodeId } = useContext(FlowContext);
+  const { setActive, setNodeId, messages } = useContext(FlowContext);
+  const [currentNodeMessage, setCurrentNodeMessage] = useState("");
 
   // node click handle
   const nodeClickHandle = () => {
     setActive(true);
     setNodeId(id);
+    console.log(id);
   };
 
-  // console.log("message: " + message);
+  useEffect(() => {
+    const message = messages.find((message) => message.id === id);
+
+    setCurrentNodeMessage(message?.message || "");
+  }, [messages, id]);
 
   return (
     <div
@@ -80,7 +86,9 @@ const MessageTextNode = ({ data: { message }, id }) => {
           height: "25px",
         }}
       >
-        <p style={{ fontSize: "8px", fontWeight: "400" }}>{message}</p>
+        <p style={{ fontSize: "8px", fontWeight: "400" }}>
+          {currentNodeMessage}
+        </p>
       </div>
 
       {/* handle */}
