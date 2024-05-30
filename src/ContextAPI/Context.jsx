@@ -57,18 +57,12 @@ const FlowProvider = ({ children }) => {
     }
   };
 
-  // const updateNodeMessage = (id, newMessage) => {
-  //   setMessages((prevMessages) =>
-  //     prevMessages.map((message) =>
-  //       // node.id === id ? { ...node, data: { message: newMessage } } : node
-  //       message.id === id ? { ...message, message: newMessage } : message
-  //     )
-  //   );
-  // };
-
+  // function to update all nodes messages
   const updateNodeMessage = (id, newMessage) => {
     setMessages((prevMessages) => {
-      const messageIndex = prevMessages.findIndex((message) => message.id === id);
+      const messageIndex = prevMessages.findIndex(
+        (message) => message.id === id
+      );
 
       if (messageIndex !== -1) {
         return [

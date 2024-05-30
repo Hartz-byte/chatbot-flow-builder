@@ -5,7 +5,7 @@ import WhatsappIcon from "../../assets/Icons/WhatsappIcon.png";
 import { Handle, Position } from "reactflow";
 import { FlowContext } from "../../ContextAPI/Context";
 
-const MessageTextNode = ({ data: { message }, id }) => {
+const MessageTextNode = ({ id }) => {
   const { setActive, setNodeId, messages } = useContext(FlowContext);
   const [currentNodeMessage, setCurrentNodeMessage] = useState("");
 
@@ -16,10 +16,11 @@ const MessageTextNode = ({ data: { message }, id }) => {
     console.log(id);
   };
 
+  // useEffect to render all node messages
   useEffect(() => {
     const message = messages.find((message) => message.id === id);
 
-    setCurrentNodeMessage(message?.message || "");
+    setCurrentNodeMessage(message?.message || `test message ${id}`);
   }, [messages, id]);
 
   return (
