@@ -7,6 +7,7 @@ import { FlowContext } from "../ContextAPI/Context";
 const MainScreen = () => {
   const { setInitialEdges, setMessages } = useContext(FlowContext);
 
+  // useEffect to get locally saved data
   useEffect(() => {
     const savedFlowData = localStorage.getItem("flowData");
 

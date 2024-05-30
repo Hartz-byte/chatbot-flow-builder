@@ -1,4 +1,3 @@
-// App.jsx
 import React from "react";
 import MainScreen from "./MainScreen/MainScreen";
 import { FlowProvider } from "./ContextAPI/Context";
