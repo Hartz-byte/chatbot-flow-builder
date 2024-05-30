@@ -1,4 +1,3 @@
-// Context.jsx
 import React, { createContext, useState } from "react";
 
 const FlowContext = createContext({
@@ -57,7 +56,7 @@ const FlowProvider = ({ children }) => {
     }
   };
 
-  // function to update all nodes messages
+  // function to update all nodes messages in an object
   const updateNodeMessage = (id, newMessage) => {
     setMessages((prevMessages) => {
       const messageIndex = prevMessages.findIndex(
@@ -82,12 +81,26 @@ const FlowProvider = ({ children }) => {
     messages.map((message) => `id: ${message.id}, message: ${message.message}`)
   );
 
+  // locally saving data
+  const saveFlow = async () => {
+    const flowData = {
+      edges: initialEdges,
+      messages,
+    };
+
+    localStorage.setItem("flowData", JSON.stringify(flowData));
+
+    console.log("locally saved flow data");
+  };
+
   return (
     <FlowContext.Provider
       value={{
         initialNodes,
+        setInitialNodes,
         addNode,
         initialEdges,
+        setInitialEdges,
         active,
         setActive,
         panelActive,
@@ -96,6 +109,7 @@ const FlowProvider = ({ children }) => {
         updateNodeMessage,
         messages,
         setMessages,
+        saveFlow,
       }}
     >
       {children}

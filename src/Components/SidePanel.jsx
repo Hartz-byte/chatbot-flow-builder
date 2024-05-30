@@ -1,4 +1,3 @@
-// SettingsPanel.jsx
 import React, { useContext } from "react";
 import MessageIcon from "../assets/Icons/MessageIcon.png";
 import MessageText from "./SettingsPanelComponent/MessageText";

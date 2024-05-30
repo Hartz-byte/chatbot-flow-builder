@@ -1,4 +1,3 @@
-// MessageTextNode.jsx
 import React, { useContext, useEffect, useState } from "react";
 import MessageIcon from "../../assets/Icons/MessageIcon.png";
 import WhatsappIcon from "../../assets/Icons/WhatsappIcon.png";
@@ -13,7 +12,6 @@ const MessageTextNode = ({ id }) => {
   const nodeClickHandle = () => {
     setActive(true);
     setNodeId(id);
-    console.log(id);
   };
 
   // useEffect to render all node messages

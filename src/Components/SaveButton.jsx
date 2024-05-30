@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FlowContext } from "../ContextAPI/Context";
 
 const SaveButton = () => {
+  const { saveFlow } = useContext(FlowContext);
+
   return (
     <div
       style={{
@@ -12,7 +15,7 @@ const SaveButton = () => {
         alignItems: "center",
       }}
     >
-      <button style={{ color: "#6B7193", marginRight: 130 }}>
+      <button style={{ color: "#6B7193", marginRight: 130 }} onClick={saveFlow}>
         Save Changes
       </button>
     </div>

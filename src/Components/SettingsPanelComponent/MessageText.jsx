@@ -1,4 +1,3 @@
-// MessageText.jsx
 import React, { useContext, useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
 import { FlowContext } from "../../ContextAPI/Context";
