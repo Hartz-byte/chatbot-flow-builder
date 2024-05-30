@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
+import { FlowContext } from "../../ContextAPI/Context";
 
 const MessageText = ({ backBtnHandle }) => {
   const [inputValue, setInputValue] = useState("");
@@ -33,6 +34,7 @@ const MessageText = ({ backBtnHandle }) => {
 
       {/* text area */}
       <div style={{ borderBottom: "1px solid #D9D9D9" }}>
+      <div style={{ borderBottom: "1px solid #D9D9D9" }}>
         <p
           style={{
             color: "#B7B7B7",
@@ -49,7 +51,7 @@ const MessageText = ({ backBtnHandle }) => {
           onChange={(e) => setInputValue(e.target.value)}
           style={{
             fontSize: 16,
-            margin: "20px 10px",
+            margin: "20px 10px 30px 10px",
             width: "370px",
             height: "80px",
             resize: "vertical",

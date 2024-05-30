@@ -14,6 +14,10 @@ const FlowContext = createContext({
 let id;
 
 const FlowProvider = ({ children }) => {
+  const [nodeMessage, setNodeMessage] = useState("test message");
+  const [initialMessage, setInitialMessage] = useState("test message");
+
+  // initial nodes
   const [initialNodes, setInitialNodes] = useState([
     {
       id: "1",
@@ -24,7 +28,7 @@ const FlowProvider = ({ children }) => {
     {
       id: "2",
       position: { x: -100, y: 0 },
-      data: { message: "test message 2" },
+      data: { message: "test message 2", id },
       type: "messageText",
     },
   ]);
@@ -36,7 +40,7 @@ const FlowProvider = ({ children }) => {
       {
         id: `new-${initialNodes.length + 1}`,
         position: { x: 0, y: 30 * (initialNodes.length + 1) },
-        data: { message: "textNode" },
+        data: { message: "textNode", id },
         type: "messageText",
       },
     ]);
@@ -45,6 +49,8 @@ const FlowProvider = ({ children }) => {
   const [initialEdges, setInitialEdges] = useState([]);
   const [active, setActive] = useState(false);
   const [nodeId, setNodeId] = useState("");
+  // const [nodeMessage, setNodeMessage] = useState("test message");
+  const [nodes, setNodes] = useState(initialNodes);
 
   // panel active status change
   const panelActive = () => {
@@ -54,6 +60,22 @@ const FlowProvider = ({ children }) => {
       setActive(true);
     }
   };
+
+  const clearNodeMessage = () => setNodeMessage("");
+
+  const updateNodeMessage = (id, newMessage) => {
+    const mess = newMessage;
+    console.log(mess);
+
+    setInitialNodes((prevNodes) =>
+      prevNodes.map((node) =>
+        node.id === id ? { ...node, data: { message: newMessage } } : node
+      )
+    );
+  };
+
+  console.log("current message is: " + initialMessage);
+  console.log("selected node id is: " + nodeId);
 
   return (
     <FlowContext.Provider
@@ -66,6 +88,11 @@ const FlowProvider = ({ children }) => {
         panelActive,
         nodeId,
         setNodeId,
+        nodeMessage,
+        setNodeMessage,
+        updateNodeMessage,
+        clearNodeMessage,
+        initialMessage,
       }}
     >
       {children}
