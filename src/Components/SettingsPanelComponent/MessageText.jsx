@@ -1,13 +1,23 @@
+// MessageText.jsx
 import React, { useContext, useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
 import { FlowContext } from "../../ContextAPI/Context";
 
 const MessageText = ({ backBtnHandle }) => {
   const [inputValue, setInputValue] = useState("");
-  const { updateNodeMessage, nodeId } = useContext(FlowContext);
+  const { updateNodeMessage, nodeId, messages } = useContext(FlowContext);
 
   const handleBtnClick = () => {
-    updateNodeMessage(nodeId, inputValue);
+    const existingMessage = messages.find((message) => message.id === nodeId);
+
+    if (existingMessage) {
+      updateNodeMessage(nodeId, inputValue);
+      setInputValue("");
+    } else {
+      const newMessage = { id: nodeId, message: inputValue };
+      updateNodeMessage(nodeId, newMessage);
+      setInputValue("");
+    }
   };
 
   return (

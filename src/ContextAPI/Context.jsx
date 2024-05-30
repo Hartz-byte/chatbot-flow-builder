@@ -17,7 +17,7 @@ const FlowProvider = ({ children }) => {
   const [initialEdges, setInitialEdges] = useState([]);
   const [active, setActive] = useState(false);
   const [nodeId, setNodeId] = useState("");
-  const [initialMessage, setInitialMessage] = useState("test message");
+  const [messages, setMessages] = useState([]);
 
   // initial nodes
   const [initialNodes, setInitialNodes] = useState([
@@ -57,15 +57,36 @@ const FlowProvider = ({ children }) => {
     }
   };
 
+  // const updateNodeMessage = (id, newMessage) => {
+  //   setMessages((prevMessages) =>
+  //     prevMessages.map((message) =>
+  //       // node.id === id ? { ...node, data: { message: newMessage } } : node
+  //       message.id === id ? { ...message, message: newMessage } : message
+  //     )
+  //   );
+  // };
+
   const updateNodeMessage = (id, newMessage) => {
-    setInitialNodes((prevNodes) =>
-      prevNodes.map((node) =>
-        node.id === id ? { ...node, data: { message: newMessage } } : node
-      )
-    );
+    setMessages((prevMessages) => {
+      const messageIndex = prevMessages.findIndex((message) => message.id === id);
+
+      if (messageIndex !== -1) {
+        return [
+          ...prevMessages.slice(0, messageIndex),
+          { ...prevMessages[messageIndex], message: newMessage.message },
+          ...prevMessages.slice(messageIndex + 1),
+        ];
+      } else {
+        return [...prevMessages, { id, message: newMessage.message }];
+      }
+    });
   };
 
   console.log("selected node id is: " + nodeId);
+  console.log(
+    "messages data are: ",
+    messages.map((message) => `id: ${message.id}, message: ${message.message}`)
+  );
 
   return (
     <FlowContext.Provider
@@ -79,7 +100,8 @@ const FlowProvider = ({ children }) => {
         nodeId,
         setNodeId,
         updateNodeMessage,
-        initialMessage,
+        messages,
+        setMessages,
       }}
     >
       {children}
