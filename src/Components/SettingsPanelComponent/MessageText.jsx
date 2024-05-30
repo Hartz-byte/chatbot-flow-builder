@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BackIcon from "../../assets/Icons/BackIcon.png";
 import { FlowContext } from "../../ContextAPI/Context";
 
 const MessageText = ({ backBtnHandle }) => {
   const [inputValue, setInputValue] = useState("");
+  const { updateNodeMessage, nodeId } = useContext(FlowContext);
+
+  const handleBtnClick = () => {
+    updateNodeMessage(nodeId, inputValue);
+  };
 
   return (
     <div>
@@ -62,7 +67,10 @@ const MessageText = ({ backBtnHandle }) => {
             }}
           />
 
-          <button style={{ marginLeft: "10px", marginBottom: "10px" }}>
+          <button
+            style={{ marginLeft: "10px", marginBottom: "10px" }}
+            onClick={handleBtnClick}
+          >
             Save Update
           </button>
         </div>

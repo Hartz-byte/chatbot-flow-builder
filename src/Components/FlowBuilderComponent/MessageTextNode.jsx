@@ -6,8 +6,7 @@ import { Handle, Position } from "reactflow";
 import { FlowContext } from "../../ContextAPI/Context";
 
 const MessageTextNode = ({ data: { message }, id }) => {
-  const { setActive, setNodeId, initialMessage, nodeId } =
-    useContext(FlowContext);
+  const { setActive, setNodeId } = useContext(FlowContext);
 
   // node click handle
   const nodeClickHandle = () => {
