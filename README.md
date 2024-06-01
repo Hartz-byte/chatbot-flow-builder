@@ -6,6 +6,8 @@ This is a React application that allows you to create and visualize workflows wi
 2. **Node customization:** Design custom nodes with your preferred text content and appearance.
 3. **Connections:** Connect nodes using edges to define the flow of your process.
 4. **Local storage:** Save your workflows locally for future reference.
+5. **Upcoming:** More customized nodes will be available in the future, with more functions.
+   
 
 **Live Demo:**
 Check out the deployed version of this project at [chatbot-flow-builder-mu-three.vercel.app](https://chatbot-flow-builder-mu-three.vercel.app "Live Demo").
