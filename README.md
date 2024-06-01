@@ -16,7 +16,9 @@ Check out the deployed version of this project at [chatbot-flow-builder-mu-three
 `git clone https://github.com/Hartz-byte/chatbot-flow-builder.git`
 
 ### 2. Directory move:
-``` sh cd react-flow-builder```
+```
+cd react-flow-builder
+```
 
 ### 3. Install dependencies:
 `npm install`
